@@ -35,7 +35,7 @@ export function dibujarInicio(p) {
 
   p.textSize(15);
   p.text(
-    "Meté la pelota en el arco del rival. Gana el primero en llegar a " +
+    "Mete la pelota en la portería rival. Gana el primero en llegar a " +
       CONFIG.puntosParaGanar + ".\n" +
       "En móvil usen los controles táctiles de cada lado.",
     CONFIG.ancho / 2,
@@ -43,7 +43,7 @@ export function dibujarInicio(p) {
   );
 
   p.textSize(22);
-  p.text("Presioná la BARRA o tocá para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 130);
+  p.text("Presiona la BARRA o toca para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 130);
 }
 
 // ganador: el objeto Player que ganó.

@@ -13,8 +13,8 @@ Ahora **todo** usa imágenes:
 - `bg_space.png` → el fondo estrellado. Es una **imagen fija** del
   tamaño del canvas (600×700). No es una tira: un solo cuadro.
 
-Para cambiar cualquiera, reemplazá el PNG con el mismo nombre, **o**
-poné otro nombre y actualizá la `ruta` correspondiente en `src/config.js`
+Para cambiar cualquiera, reemplaza el PNG con el mismo nombre, **o**
+usa otro nombre y actualiza la `ruta` correspondiente en `src/config.js`
 (dentro de `sprites`). Si falta un PNG, el juego dibuja la figura simple
 de siempre y no se rompe.
 
@@ -22,10 +22,10 @@ de siempre y no se rompe.
 
 Ya hay un sprite placeholder (`player_ship.png`). Para usar el tuyo:
 
-1. Reemplazá `player_ship.png` por tu propio PNG (mismo nombre = no
-   tocás nada más), **o** poné otro nombre y actualizá la `ruta` en
+1. Reemplaza `player_ship.png` por tu propio PNG (mismo nombre = no
+   tocas nada más), **o** usa otro nombre y actualiza la `ruta` en
    `src/config.js`.
-2. Si tus cuadros tienen otro tamaño o cantidad, ajustá en `config.js`
+2. Si tus cuadros tienen otro tamaño o cantidad, ajusta en `config.js`
    `frameAncho`, `frameAlto` y `frames`.
 3. Listo.
 
@@ -46,6 +46,6 @@ En `config.js` eso sería: `frameAncho: 32`, `frameAlto: 32`, `frames: 4`.
 
 ## Consejos
 
-- Empezá con cuadros de **32×32**: tamaño cómodo para principiantes.
+- Empieza con cuadros de **32×32**: tamaño cómodo para principiantes.
 - `escala` controla qué tan grande se ve en pantalla (no cambia el PNG).
 - El look pixel nítido ya está activado con `noSmooth()` en `main.js`.

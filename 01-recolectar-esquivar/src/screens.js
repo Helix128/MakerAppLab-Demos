@@ -20,16 +20,16 @@ export function dibujarInicio(p) {
 
   p.textSize(18);
   p.text(
-    "Movete con las FLECHAS o WASD.\n" +
-      "Recogé los diamantes para sumar puntos.\n" +
-      "Esquivá los cuadrados rojos.\n" +
-      "En móvil usá los botones en pantalla.",
+    "Muévete con las FLECHAS o WASD.\n" +
+      "Recoge los diamantes para sumar puntos.\n" +
+      "Esquiva los cuadrados rojos.\n" +
+      "En móvil usa los botones en pantalla.",
     CONFIG.ancho / 2,
     CONFIG.alto / 2
   );
 
   p.textSize(22);
-  p.text("Presioná ENTER o tocá para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 110);
+  p.text("Presiona ENTER o toca para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 110);
 }
 
 export function dibujarVictoria(p, puntos) {

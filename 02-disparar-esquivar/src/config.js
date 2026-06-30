@@ -39,7 +39,7 @@ export const CONFIG = {
   colorTexto: "#ffffff",
 
   // ---- Sprites (imágenes) ----
-  // Para cambiar un dibujo, reemplazá el PNG correspondiente en assets/.
+  // Para cambiar un dibujo, reemplaza el PNG correspondiente en assets/.
   sprites: {
     jugador: {
       ruta: "./assets/player_ship.png", // PNG en assets/

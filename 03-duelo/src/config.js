@@ -21,8 +21,8 @@ export const CONFIG = {
     aceleracion: 1.04, // cuánto se acelera en cada rebote con un jugador
   },
 
-  // Arcos (goles)
-  golAlto: 180, // alto del hueco del arco en cada costado
+  // Porterías (goles)
+  golAlto: 180, // alto del hueco de la portería en cada costado
 
   // Partida
   puntosParaGanar: 5,
@@ -45,7 +45,7 @@ export const CONFIG = {
       escala: 34, // tamaño con el que se dibuja en pantalla
     },
     // El fondo (pista de hielo) es una imagen fija que cubre el canvas.
-    // Las líneas y arcos los dibuja el juego encima.
+    // Las líneas y porterías las dibuja el juego encima.
     fondo: {
       ruta: "./assets/bg_rink.png",
     },

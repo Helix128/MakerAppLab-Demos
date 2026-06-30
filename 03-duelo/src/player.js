@@ -1,7 +1,7 @@
 // ============================================================
 //  JUGADOR (MAZO)
 //  La misma clase sirve para los dos jugadores. Lo que cambia
-//  (teclas, color, mitad de la cancha) llega como parámetro.
+//  (teclas, color, mitad del campo) llega como parámetro.
 //  Cada jugador se mueve libremente pero dentro de su mitad.
 // ============================================================
 
@@ -53,7 +53,7 @@ export class Player {
     this.vy = this.y - anteriorY;
   }
 
-  // El jugador no puede salir de su mitad de la cancha.
+  // El jugador no puede salir de su mitad del campo.
   limitarAMitad() {
     const radio = this.tamano / 2;
     const centro = CONFIG.ancho / 2;

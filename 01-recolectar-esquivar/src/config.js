@@ -18,7 +18,7 @@ export const CONFIG = {
   puntosParaGanar: 100, // puntos necesarios para ganar
   puntosPorObjeto: 10, // puntos que da cada objeto bueno
 
-  // Objetos beneficiosos (los que sumás)
+  // Objetos beneficiosos (los que suman puntos)
   objetoTamano: 20,
 
   // Enemigos (los que hay que esquivar)
@@ -39,7 +39,7 @@ export const CONFIG = {
   colorTexto: "#ffffff",
 
   // ---- Sprites (imágenes) ----
-  // Para cambiar un dibujo, reemplazá el PNG correspondiente en assets/.
+  // Para cambiar un dibujo, reemplaza el PNG correspondiente en assets/.
   sprites: {
     jugador: {
       ruta: "./assets/player_walk.png", // PNG en assets/

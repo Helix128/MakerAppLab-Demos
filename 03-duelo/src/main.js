@@ -1,7 +1,7 @@
 // ============================================================
 //  PUNTO DE ARRANQUE
 //  Conecta p5.js con el juego. Normalmente no hace falta
-//  tocar este archivo.
+//  modificar este archivo.
 // ============================================================
 
 import { CONFIG } from "./config.js";

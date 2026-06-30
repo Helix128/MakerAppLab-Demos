@@ -1,8 +1,8 @@
 // ============================================================
 //  JUEGO (CEREBRO)
 //  Maneja los estados (inicio, jugando, fin) y las reglas:
-//  los jugadores golpean la pelota; si entra en un arco, el
-//  otro suma un punto. El primero en llegar a la meta gana.
+//  los jugadores golpean la pelota; si entra en una portería,
+//  el otro suma un punto. El primero en llegar a la meta gana.
 // ============================================================
 
 import { CONFIG } from "./config.js";
@@ -75,14 +75,14 @@ export class Game {
 
   revisarGoles() {
     if (this.pelota.golIzquierda()) {
-      // Entró en el arco izquierdo: punto para el jugador derecho.
+      // Entró en la portería izquierda: punto para el jugador derecho.
       this.jugador2.puntos++;
       this.trasGol(this.jugador1); // el goleado fue el jugador 1
     } else if (this.pelota.golDerecha()) {
       this.jugador1.puntos++;
       this.trasGol(this.jugador2);
     } else {
-      // Pegó en un costado pero fuera del arco: rebota.
+      // Pegó en un costado pero fuera de la portería: rebota.
       this.pelota.rebotarCostados();
     }
   }

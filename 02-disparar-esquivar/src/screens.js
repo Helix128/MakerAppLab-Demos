@@ -19,17 +19,17 @@ export function dibujarInicio(p) {
 
   p.textSize(18);
   p.text(
-    "Movete con las FLECHAS o WASD.\n" +
-      "Dispará con la barra ESPACIADORA.\n" +
-      "En móvil usá el botón táctil de disparo.\n" +
-      "Destruí enemigos para sumar puntos.\n" +
-      "No dejes que te choquen.",
+    "Muévete con las FLECHAS o WASD.\n" +
+      "Dispara con la barra ESPACIADORA.\n" +
+      "En móvil usa el botón táctil de disparo.\n" +
+      "Destruye enemigos para sumar puntos.\n" +
+      "No dejes que choquen contigo.",
     CONFIG.ancho / 2,
     CONFIG.alto / 2
   );
 
   p.textSize(22);
-  p.text("Presioná ENTER o tocá para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 120);
+  p.text("Presiona ENTER o toca para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 120);
 }
 
 export function dibujarVictoria(p, puntos) {

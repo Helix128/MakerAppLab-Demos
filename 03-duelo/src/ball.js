@@ -1,8 +1,8 @@
 // ============================================================
 //  PELOTA
 //  Se mueve sola, rebota en los bordes de arriba y abajo, y
-//  rebota cuando un jugador (mazo) la toca. Si entra en un
-//  arco, alguien metió un gol.
+//  rebota cuando un jugador (mazo) la toca. Si entra en una
+//  portería, alguien anotó un gol.
 // ============================================================
 
 import { CONFIG } from "./config.js";
@@ -133,12 +133,12 @@ export class Ball {
     return true;
   }
 
-  // ¿Entró en el arco izquierdo? (gol del jugador derecho)
+  // ¿Entró en la portería izquierda? (gol del jugador derecho)
   golIzquierda() {
     return this.x - this.tamano / 2 < 0 && this.estaEnHuecoArco();
   }
 
-  // ¿Entró en el arco derecho? (gol del jugador izquierdo)
+  // ¿Entró en la portería derecha? (gol del jugador izquierdo)
   golDerecha() {
     return this.x + this.tamano / 2 > CONFIG.ancho && this.estaEnHuecoArco();
   }
@@ -150,7 +150,7 @@ export class Ball {
     );
   }
 
-  // Si pegó en un costado pero fuera del arco, rebota.
+  // Si pegó en un costado pero fuera de la portería, rebota.
   rebotarCostados() {
     if (this.estaEnHuecoArco()) return;
 

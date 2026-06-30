@@ -11,7 +11,7 @@ No hace falta Node, npm, Vite ni conexión a internet.
 |-----------------------------|----------------------|----------------------------------------------------------------|
 | `01-recolectar-esquivar/`   | Recolectar y esquivar| Recoge objetos buenos (suman puntos), esquiva enemigos (restan vida). Llega a los puntos para ganar. |
 | `02-disparar-esquivar/`     | Disparar y esquivar  | Mueve la nave y dispara a los enemigos; esquiva sus choques. Suma puntos para ganar. |
-| `03-duelo/`                 | Duelo 2 jugadores    | Hockey/fútbol de mesa: dos jugadores en el mismo teclado golpean la pelota e intentan hacer goles en el arco contrario. |
+| `03-duelo/`                 | Duelo 2 jugadores    | Hockey/fútbol de mesa: dos jugadores en el mismo teclado golpean la pelota e intentan hacer goles en la portería contraria. |
 
 ## Cómo ejecutar con Live Server
 
@@ -71,7 +71,7 @@ INICIO  ──(empezar)──►  JUGANDO  ──(ganar/perder)──►  GANAST
    └──────────────────(empezar de nuevo)───────────────────┘
 ```
 
-## ¿Por dónde empiezo a tocar?
+## ¿Por dónde empiezo a modificar?
 
 1. Abre `src/config.js` y cambia números (velocidad, vidas, puntos para ganar).
    Es la forma más rápida y segura de ver cómo cambia el juego.

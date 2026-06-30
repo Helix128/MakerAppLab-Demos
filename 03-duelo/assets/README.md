@@ -9,22 +9,22 @@ Este juego usa **tres** imágenes:
   (un solo cuadro).
 - `ball_spin.png` → la **pelota**. Es una **tira animada** (parece girar).
 - `bg_rink.png` → el **fondo** (pista de hielo). Es una **imagen fija**
-  del tamaño del canvas (800×500). Las líneas y los arcos los dibuja el
+  del tamaño del canvas (800×500). Las líneas y las porterías las dibuja el
   juego por encima, así que el fondo es solo el hielo.
 
 ## Cómo cambiar el mazo (jugador)
 
-1. Reemplazá `player_duel.png` por tu propio PNG (mismo nombre = no
-   tocás nada más), **o** poné otro nombre y actualizá la `ruta` del
+1. Reemplaza `player_duel.png` por tu propio PNG (mismo nombre = no
+   tocas nada más), **o** usa otro nombre y actualiza la `ruta` del
    sprite `jugador` en `src/config.js`.
 2. Es una imagen fija, así que cualquier PNG cuadrado sirve.
 3. `escala` (en `config.js`) controla qué tan grande se ve.
 
 ## Cómo cambiar la pelota
 
-1. Reemplazá `ball_spin.png` por tu propia tira animada (mismo nombre),
-   **o** poné otro nombre y actualizá la `ruta` del sprite `pelota`.
-2. Si tus cuadros tienen otro tamaño o cantidad, ajustá en `config.js`
+1. Reemplaza `ball_spin.png` por tu propia tira animada (mismo nombre),
+   **o** usa otro nombre y actualiza la `ruta` del sprite `pelota`.
+2. Si tus cuadros tienen otro tamaño o cantidad, ajusta en `config.js`
    `frameAncho`, `frameAlto` y `frames` del sprite `pelota`.
 3. `fps` controla la velocidad del giro.
 
@@ -45,6 +45,6 @@ En `config.js` eso sería: `frameAncho: 32`, `frameAlto: 32`, `frames: 4`.
 
 ## Consejos
 
-- Empezá con cuadros de **32×32**: tamaño cómodo para principiantes.
+- Empieza con cuadros de **32×32**: tamaño cómodo para principiantes.
 - `escala` controla qué tan grande se ve en pantalla (no cambia el PNG).
 - El look pixel nítido ya está activado con `noSmooth()` en `main.js`.

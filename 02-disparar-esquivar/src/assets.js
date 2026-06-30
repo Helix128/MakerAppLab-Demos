@@ -8,7 +8,7 @@
 import { CONFIG } from "./config.js";
 import { Sprite } from "./sprite.js";
 
-// Acá quedan guardados los sprites ya cargados.
+// Aquí quedan guardados los sprites ya cargados.
 // Empiezan en null (todavía sin imagen).
 export const assets = {
   jugador: null,
