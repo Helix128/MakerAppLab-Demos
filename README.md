@@ -9,9 +9,9 @@ lógica separada en archivos pequeños para que sea fácil entender **dónde** y
 
 | Carpeta                     | Juego                | Idea                                                            |
 |-----------------------------|----------------------|----------------------------------------------------------------|
-| `01-recolectar-esquivar/`   | Recolectar y esquivar| Recoge objetos buenos (suman puntos), esquiva enemigos (restan vida). |
-| `02-disparar-esquivar/`     | Disparar y esquivar  | Muévete y dispara a los enemigos; esquiva sus choques.         |
-| `03-duelo/`                 | Duelo 2 jugadores    | Dos jugadores en el mismo teclado se disparan entre sí.        |
+| `01-recolectar-esquivar/`   | Recolectar y esquivar| Recoge objetos buenos (suman puntos), esquiva enemigos (restan vida). Llega a los puntos para ganar. |
+| `02-disparar-esquivar/`     | Disparar y esquivar  | Mueve la nave y dispara a los enemigos; esquiva sus choques. Suma puntos para ganar. |
+| `03-duelo/`                 | Duelo 2 jugadores    | Hockey/fútbol de mesa: dos jugadores en el mismo teclado golpean la pelota e intentan hacer goles en el arco contrario. |
 
 ## Cómo ejecutar una demo
 
@@ -47,9 +47,20 @@ entiendes una, entiendes las otras.
 | `src/input.js`      | Lectura del teclado.                                            |
 | `src/collisions.js` | Detección de choques.                                           |
 | `src/screens.js`    | Pantallas de inicio, victoria y derrota.                        |
+| `src/sprite.js`     | Dibujo y animación de sprites (tiras de imágenes).             |
+| `src/assets.js`     | Carga de imágenes (sprites y fondo).                           |
 
-Otros archivos según el juego: `enemy.js`, `collectible.js`, `bullet.js`,
-`spawner.js`.
+Archivos propios de cada juego:
+
+- `01-recolectar-esquivar/`: `enemy.js`, `collectible.js`, `spawner.js`.
+- `02-disparar-esquivar/`: `enemy.js`, `bullet.js`, `spawner.js`.
+- `03-duelo/`: `ball.js` (la pelota). No usa `spawner.js`.
+
+### Controles
+
+- **01 y 02:** mover con flechas o `WASD`.
+- **03 (duelo):** Jugador 1 con `W` `A` `S` `D`, Jugador 2 con las flechas.
+  Los códigos de tecla se cambian en `src/config.js` (`jugador1` y `jugador2`).
 
 ### Estados del juego
 
