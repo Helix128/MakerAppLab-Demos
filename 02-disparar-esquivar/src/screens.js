@@ -21,6 +21,7 @@ export function dibujarInicio(p) {
   p.text(
     "Movete con las FLECHAS o WASD.\n" +
       "Dispará con la barra ESPACIADORA.\n" +
+      "En móvil usá el botón táctil de disparo.\n" +
       "Destruí enemigos para sumar puntos.\n" +
       "No dejes que te choquen.",
     CONFIG.ancho / 2,
@@ -28,7 +29,7 @@ export function dibujarInicio(p) {
   );
 
   p.textSize(22);
-  p.text("Presioná ENTER para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 100);
+  p.text("Presioná ENTER o tocá para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 120);
 }
 
 export function dibujarVictoria(p, puntos) {

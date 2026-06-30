@@ -25,7 +25,7 @@ export class Bullet {
   }
 
   draw(p) {
-    // Sprite animado de la bala, con figura de respaldo si no cargó.
+    // Sprite fijo de la bala, con figura de respaldo si no cargó.
     if (assets.bala) {
       const escala = CONFIG.sprites.bala.escala;
       assets.bala.draw(p, this.x, this.y, escala, escala);

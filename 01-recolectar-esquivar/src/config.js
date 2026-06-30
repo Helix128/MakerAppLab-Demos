@@ -39,31 +39,18 @@ export const CONFIG = {
   colorTexto: "#ffffff",
 
   // ---- Sprites (imágenes) ----
-  // El jugador usa este sprite. Para cambiar el dibujo, reemplazá
-  // el PNG en assets/ (mismo formato: tira horizontal).
+  // Para cambiar un dibujo, reemplazá el PNG correspondiente en assets/.
   sprites: {
     jugador: {
       ruta: "./assets/player_walk.png", // PNG en assets/
-      frameAncho: 32, // tamaño de un cuadro dentro del PNG
-      frameAlto: 32,
-      frames: 4, // cuántos cuadros tiene la tira
-      fps: 8, // velocidad de la animación
       escala: 48, // tamaño con el que se dibuja en pantalla
     },
     enemigo: {
       ruta: "./assets/enemy_spike.png",
-      frameAncho: 32,
-      frameAlto: 32,
-      frames: 4,
-      fps: 8,
       escala: 36, // un poco más grande que el cuadrado original
     },
     objeto: {
       ruta: "./assets/gem.png",
-      frameAncho: 32,
-      frameAlto: 32,
-      frames: 4,
-      fps: 6,
       escala: 28,
     },
     // El fondo es una imagen fija que cubre todo el canvas.

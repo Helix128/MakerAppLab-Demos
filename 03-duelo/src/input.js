@@ -16,6 +16,14 @@ export function teclaSoltada(codigo) {
   presionadas.delete(codigo);
 }
 
+export function presionarVirtual(codigo) {
+  presionadas.add(codigo);
+}
+
+export function soltarVirtual(codigo) {
+  presionadas.delete(codigo);
+}
+
 // true si esa tecla está presionada ahora.
 export function estaPresionada(codigo) {
   return presionadas.has(codigo);

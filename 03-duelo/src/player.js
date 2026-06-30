@@ -25,6 +25,8 @@ export class Player {
     this.inicioY = y;
     this.tamano = CONFIG.jugadorTamano;
     this.velocidad = CONFIG.jugadorVelocidad;
+    this.vx = 0;
+    this.vy = 0;
     this.puntos = 0;
   }
 
@@ -32,16 +34,23 @@ export class Player {
   reiniciarPosicion() {
     this.x = this.inicioX;
     this.y = this.inicioY;
+    this.vx = 0;
+    this.vy = 0;
   }
 
   update() {
+    const anteriorX = this.x;
+    const anteriorY = this.y;
     const c = this.controles;
+
     if (estaPresionada(c.izquierda)) this.x -= this.velocidad;
     if (estaPresionada(c.derecha)) this.x += this.velocidad;
     if (estaPresionada(c.arriba)) this.y -= this.velocidad;
     if (estaPresionada(c.abajo)) this.y += this.velocidad;
 
     this.limitarAMitad();
+    this.vx = this.x - anteriorX;
+    this.vy = this.y - anteriorY;
   }
 
   // El jugador no puede salir de su mitad de la cancha.

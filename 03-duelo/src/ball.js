@@ -11,9 +11,6 @@ import { assets } from "./assets.js";
 export class Ball {
   constructor() {
     this.tamano = CONFIG.pelota.tamano;
-    // Último jugador que la golpeó: no puede volver a golpearla hasta
-    // que la pelota toque un muro o el otro jugador.
-    this.ultimoGolpeador = null;
     // Mientras está congelada, espera el saque del jugador goleado.
     this.congelada = false;
     this.reiniciar();
@@ -24,7 +21,6 @@ export class Ball {
   reiniciar(hacia = 0) {
     this.x = CONFIG.ancho / 2;
     this.y = CONFIG.alto / 2;
-    this.ultimoGolpeador = null;
     this.congelada = false;
 
     const dirX = hacia !== 0 ? hacia : Math.random() < 0.5 ? -1 : 1;
@@ -43,7 +39,6 @@ export class Ball {
       jugador.mitad === "izquierda" ? CONFIG.ancho * 0.3 : CONFIG.ancho * 0.7;
     this.vx = 0;
     this.vy = 0;
-    this.ultimoGolpeador = null;
     this.congelada = true;
   }
 
@@ -58,42 +53,84 @@ export class Ball {
     if (this.y - radio < 0) {
       this.y = radio;
       this.vy = Math.abs(this.vy);
-      this.ultimoGolpeador = null; // tocó un muro: se libera el golpe
     } else if (this.y + radio > CONFIG.alto) {
       this.y = CONFIG.alto - radio;
       this.vy = -Math.abs(this.vy);
-      this.ultimoGolpeador = null;
     }
   }
 
-  // Rebote contra un jugador: reflejamos la velocidad según la
-  // línea que va del jugador a la pelota (como un mazo de hockey),
-  // y aceleramos un poco hasta un tope.
-  rebotarCon(jugador) {
+  normalContra(jugador) {
     let nx = this.x - jugador.x;
     let ny = this.y - jugador.y;
-    const dist = Math.hypot(nx, ny) || 1;
-    nx /= dist;
-    ny /= dist;
+    const dist = Math.hypot(nx, ny);
 
-    // Reposicionar la pelota justo afuera del jugador para que no
-    // se quede pegada.
+    if (dist > 0) {
+      return { nx: nx / dist, ny: ny / dist };
+    }
+
+    const rvx = this.vx - (jugador.vx || 0);
+    const rvy = this.vy - (jugador.vy || 0);
+    const relDist = Math.hypot(rvx, rvy);
+    if (relDist > 0) {
+      return { nx: -rvx / relDist, ny: -rvy / relDist };
+    }
+
+    return { nx: 1, ny: 0 };
+  }
+
+  seAcercaA(jugador) {
+    const { nx, ny } = this.normalContra(jugador);
+    const rvx = this.vx - (jugador.vx || 0);
+    const rvy = this.vy - (jugador.vy || 0);
+    return rvx * nx + rvy * ny < 0;
+  }
+
+  // Rebote contra un jugador: reflejamos la velocidad relativa a la
+  // superficie del mazo y después devolvemos su movimiento a la pelota.
+  rebotarCon(jugador) {
+    const { nx, ny } = this.normalContra(jugador);
+    const jugadorVx = jugador.vx || 0;
+    const jugadorVy = jugador.vy || 0;
+
     const minDist = this.tamano / 2 + jugador.tamano / 2;
     this.x = jugador.x + nx * minDist;
     this.y = jugador.y + ny * minDist;
 
-    // Si estaba esperando el saque, ahora arranca.
-    // En el saque usamos la velocidad base; si no, mantenemos y
-    // aceleramos un poco hasta el tope.
-    const base = this.congelada
-      ? CONFIG.pelota.velocidad
-      : Math.hypot(this.vx, this.vy) * CONFIG.pelota.aceleracion;
-    const nuevaVel = Math.min(base, CONFIG.pelota.velocidadMax);
-    this.vx = nx * nuevaVel;
-    this.vy = ny * nuevaVel;
+    let nuevoVx;
+    let nuevoVy;
 
+    if (this.congelada) {
+      nuevoVx = nx * CONFIG.pelota.velocidad + jugadorVx;
+      nuevoVy = ny * CONFIG.pelota.velocidad + jugadorVy;
+    } else {
+      const rvx = this.vx - jugadorVx;
+      const rvy = this.vy - jugadorVy;
+      const normalVel = rvx * nx + rvy * ny;
+
+      if (normalVel >= 0) return false;
+
+      nuevoVx = rvx - 2 * normalVel * nx + jugadorVx;
+      nuevoVy = rvy - 2 * normalVel * ny + jugadorVy;
+    }
+
+    let magnitud = Math.hypot(nuevoVx, nuevoVy);
+    if (magnitud === 0) {
+      nuevoVx = nx;
+      nuevoVy = ny;
+      magnitud = 1;
+    }
+
+    const nuevaVel = Math.min(
+      Math.max(magnitud, CONFIG.pelota.velocidad) *
+        (this.congelada ? 1 : CONFIG.pelota.aceleracion),
+      CONFIG.pelota.velocidadMax
+    );
+
+    this.vx = (nuevoVx / magnitud) * nuevaVel;
+    this.vy = (nuevoVy / magnitud) * nuevaVel;
     this.congelada = false;
-    this.ultimoGolpeador = jugador;
+
+    return true;
   }
 
   // ¿Entró en el arco izquierdo? (gol del jugador derecho)
@@ -115,15 +152,15 @@ export class Ball {
 
   // Si pegó en un costado pero fuera del arco, rebota.
   rebotarCostados() {
+    if (this.estaEnHuecoArco()) return;
+
     const radio = this.tamano / 2;
     if (this.x - radio < 0) {
       this.x = radio;
       this.vx = Math.abs(this.vx);
-      this.ultimoGolpeador = null; // tocó un muro: se libera el golpe
     } else if (this.x + radio > CONFIG.ancho) {
       this.x = CONFIG.ancho - radio;
       this.vx = -Math.abs(this.vx);
-      this.ultimoGolpeador = null;
     }
   }
 

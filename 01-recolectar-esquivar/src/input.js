@@ -21,6 +21,10 @@ export function teclaSoltada(codigo) {
   cambiarTecla(codigo, false);
 }
 
+export function cambiarControl(nombre, valor) {
+  teclas[nombre] = valor;
+}
+
 function cambiarTecla(codigo, valor) {
   switch (codigo) {
     case "ArrowUp":

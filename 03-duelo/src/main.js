@@ -8,6 +8,7 @@ import { CONFIG } from "./config.js";
 import { Game } from "./game.js";
 import { teclaPresionada, teclaSoltada } from "./input.js";
 import { cargarAssets } from "./assets.js";
+import { crearControlesMoviles } from "./mobile-controls.js";
 
 const sketch = (p) => {
   let game;
@@ -22,6 +23,7 @@ const sketch = (p) => {
     canvas.parent("app");
     p.noSmooth(); // mantén los píxeles nítidos (look retro)
     game = new Game();
+    crearControlesMoviles({ empezar: () => game.presionarEspacio() });
   };
 
   p.draw = () => {

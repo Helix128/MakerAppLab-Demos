@@ -2,6 +2,7 @@
 
 Tres juegos sencillos hechos con p5.js y pensados como material de aprendizaje.
 Cada demo funciona como sitio estático: `index.html` + archivos JavaScript + assets locales.
+La copia de p5.js está centralizada en `vendor/p5.min.js` en la raíz del repositorio.
 No hace falta Node, npm, Vite ni conexión a internet.
 
 ## Demos
@@ -12,18 +13,22 @@ No hace falta Node, npm, Vite ni conexión a internet.
 | `02-disparar-esquivar/`     | Disparar y esquivar  | Mueve la nave y dispara a los enemigos; esquiva sus choques. Suma puntos para ganar. |
 | `03-duelo/`                 | Duelo 2 jugadores    | Hockey/fútbol de mesa: dos jugadores en el mismo teclado golpean la pelota e intentan hacer goles en el arco contrario. |
 
-## Cómo ejecutar una demo con Live Server
+## Cómo ejecutar con Live Server
+
+La forma recomendada es servir la **raíz del repositorio**:
 
 1. Abre este repositorio en VS Code.
-2. Entra a la carpeta de una demo.
-3. Click derecho sobre su `index.html`.
-4. Elige **Open with Live Server**.
+2. Click derecho sobre `index.html` en la raíz.
+3. Elige **Open with Live Server**.
+4. Entra a la demo desde el menú.
 
-También puedes servir todo el repositorio con Live Server y abrir:
+También puedes abrir directamente:
 
-- `/01-recolectar-esquivar/index.html`
-- `/02-disparar-esquivar/index.html`
-- `/03-duelo/index.html`
+- `/01-recolectar-esquivar/`
+- `/02-disparar-esquivar/`
+- `/03-duelo/`
+
+Importante: las demos cargan p5.js desde `../vendor/p5.min.js`, así que Live Server debe servir el repositorio completo, no una carpeta de demo aislada.
 
 ## Cómo está organizado cada juego
 
@@ -32,8 +37,7 @@ entiendes una, entiendes las otras.
 
 | Archivo             | Para qué sirve                                                  |
 |---------------------|----------------------------------------------------------------|
-| `index.html`        | Página que carga p5 local y arranca el juego.                  |
-| `vendor/p5.min.js`  | Copia local de p5.js. Evita depender de npm o CDN.             |
+| `index.html`        | Página que carga p5 local desde `../vendor/p5.min.js` y arranca el juego. |
 | `assets/`           | Imágenes usadas por el juego.                                  |
 | `src/main.js`       | Punto de arranque. Conecta p5.js con el juego.                 |
 | `src/config.js`     | **Panel de ajustes.** Empieza a experimentar cambiando aquí.   |

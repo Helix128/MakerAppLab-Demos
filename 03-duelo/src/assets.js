@@ -6,13 +6,13 @@
 // ============================================================
 
 import { CONFIG } from "./config.js";
-import { Sprite, AnimatedSprite } from "./sprite.js";
+import { Sprite } from "./sprite.js";
 
 // Acá quedan guardados los sprites ya cargados.
 // Empiezan en null (todavía sin imagen).
 export const assets = {
   jugador: null, // imagen fija (mazo)
-  pelota: null, // imagen animada (pelota que gira)
+  pelota: null, // imagen fija
   fondo: null, // imagen fija (pista de hielo)
 };
 
@@ -30,18 +30,12 @@ export function cargarAssets(p) {
     }
   );
 
-  // --- Pelota: tira animada (parece girar) ---
+  // --- Pelota: imagen fija ---
   const b = CONFIG.sprites.pelota;
   p.loadImage(
     b.ruta,
     (img) => {
-      assets.pelota = new AnimatedSprite(
-        img,
-        b.frameAncho,
-        b.frameAlto,
-        b.frames,
-        b.fps
-      );
+      assets.pelota = new Sprite(img);
     },
     () => {
       console.warn("No se pudo cargar el sprite de la pelota:", b.ruta);

@@ -64,11 +64,10 @@ export class Game {
 
   revisarRebotesConJugadores() {
     for (const jugador of [this.jugador1, this.jugador2]) {
-      // Un jugador no puede volver a golpear la pelota hasta que esta
-      // toque un muro o al otro jugador (evita rebotes pegados y que
-      // se quede atrapada en una esquina).
-      if (jugador === this.pelota.ultimoGolpeador) continue;
-      if (circulosColisionan(this.pelota, jugador)) {
+      if (
+        circulosColisionan(this.pelota, jugador) &&
+        this.pelota.seAcercaA(jugador)
+      ) {
         this.pelota.rebotarCon(jugador);
       }
     }
@@ -169,7 +168,9 @@ export class Game {
   }
 
   hacerClic(mx, my) {
-    if (this.estado === ESTADOS.FIN && clicEnReinicio(mx, my)) {
+    if (this.estado === ESTADOS.INICIO) {
+      this.empezar();
+    } else if (this.estado === ESTADOS.FIN && clicEnReinicio(mx, my)) {
       this.empezar();
     }
   }

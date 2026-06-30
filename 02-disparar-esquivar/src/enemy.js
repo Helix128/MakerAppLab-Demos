@@ -54,7 +54,7 @@ export class Enemy {
   }
 
   draw(p) {
-    // Sprite animado del enemigo, con figura de respaldo si no cargó.
+    // Sprite fijo del enemigo, con figura de respaldo si no cargó.
     if (assets.enemigo) {
       const escala = CONFIG.sprites.enemigo.escala;
       assets.enemigo.draw(p, this.x, this.y, escala, escala);

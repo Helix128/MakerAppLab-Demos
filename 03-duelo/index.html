@@ -17,12 +17,78 @@
       canvas {
         display: block;
         border-radius: 8px;
+        touch-action: none;
+      }
+      .mobile-controls {
+        display: none;
+      }
+      @media (hover: none), (pointer: coarse) {
+        body {
+          overflow: hidden;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: none;
+        }
+        .mobile-controls {
+          position: fixed;
+          inset: 0;
+          display: block;
+          pointer-events: none;
+        }
+        .mobile-player {
+          position: absolute;
+          bottom: 16px;
+          width: 150px;
+          pointer-events: auto;
+        }
+        .mobile-player-1 { left: 16px; }
+        .mobile-player-2 { right: 16px; }
+        .mobile-name {
+          margin-bottom: 6px;
+          text-align: center;
+          font: 700 14px system-ui, sans-serif;
+          text-shadow: 0 1px 3px black;
+        }
+        .mobile-dpad {
+          position: relative;
+          width: 150px;
+          height: 150px;
+        }
+        .mobile-btn {
+          position: absolute;
+          width: 54px;
+          height: 54px;
+          border: 2px solid rgba(255, 255, 255, 0.65);
+          border-radius: 14px;
+          background: rgba(255, 255, 255, 0.22);
+          color: white;
+          font: 700 22px system-ui, sans-serif;
+          touch-action: none;
+          user-select: none;
+          -webkit-user-select: none;
+        }
+        .mobile-btn:active {
+          background: rgba(255, 255, 255, 0.42);
+        }
+        .mobile-up { left: 48px; top: 0; }
+        .mobile-left { left: 0; top: 48px; }
+        .mobile-right { right: 0; top: 48px; }
+        .mobile-down { left: 48px; bottom: 0; }
+        .mobile-start {
+          left: 50%;
+          bottom: 28px;
+          transform: translateX(-50%);
+          width: 112px;
+          height: 54px;
+          font-size: 16px;
+          pointer-events: auto;
+        }
       }
     </style>
   </head>
   <body>
     <div id="app"></div>
-    <script src="./vendor/p5.min.js"></script>
+    <script src="../vendor/p5.min.js"></script>
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>

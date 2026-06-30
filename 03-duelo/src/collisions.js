@@ -7,5 +7,5 @@
 export function circulosColisionan(a, b) {
   const distancia = Math.hypot(a.x - b.x, a.y - b.y);
   const sumaRadios = a.tamano / 2 + b.tamano / 2;
-  return distancia < sumaRadios;
+  return distancia <= sumaRadios;
 }

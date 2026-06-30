@@ -6,7 +6,7 @@
 // ============================================================
 
 import { CONFIG } from "./config.js";
-import { Sprite, AnimatedSprite } from "./sprite.js";
+import { Sprite } from "./sprite.js";
 
 // Acá quedan guardados los sprites ya cargados.
 // Empiezan en null (todavía sin imagen).
@@ -25,49 +25,31 @@ export function cargarAssets(p) {
   p.loadImage(
     j.ruta,
     (img) => {
-      assets.jugador = new AnimatedSprite(
-        img,
-        j.frameAncho,
-        j.frameAlto,
-        j.frames,
-        j.fps
-      );
+      assets.jugador = new Sprite(img);
     },
     () => {
       console.warn("No se pudo cargar el sprite del jugador:", j.ruta);
     }
   );
 
-  // --- Enemigo (tira animada) ---
+  // --- Enemigo (imagen fija) ---
   const e = CONFIG.sprites.enemigo;
   p.loadImage(
     e.ruta,
     (img) => {
-      assets.enemigo = new AnimatedSprite(
-        img,
-        e.frameAncho,
-        e.frameAlto,
-        e.frames,
-        e.fps
-      );
+      assets.enemigo = new Sprite(img);
     },
     () => {
       console.warn("No se pudo cargar el sprite del enemigo:", e.ruta);
     }
   );
 
-  // --- Bala (tira animada) ---
+  // --- Bala (imagen fija) ---
   const b = CONFIG.sprites.bala;
   p.loadImage(
     b.ruta,
     (img) => {
-      assets.bala = new AnimatedSprite(
-        img,
-        b.frameAncho,
-        b.frameAlto,
-        b.frames,
-        b.fps
-      );
+      assets.bala = new Sprite(img);
     },
     () => {
       console.warn("No se pudo cargar el sprite de la bala:", b.ruta);

@@ -11,13 +11,13 @@ export const CONFIG = {
 
   // Jugadores (paletas / mazos)
   jugadorTamano: 40,
-  jugadorVelocidad: 5,
+  jugadorVelocidad: 5.5,
 
   // Pelota
   pelota: {
     tamano: 26,
-    velocidad: 6, // velocidad inicial al sacar
-    velocidadMax: 14, // tope de velocidad
+    velocidad: 5, // velocidad inicial al sacar
+    velocidadMax: 10, // tope de velocidad
     aceleracion: 1.04, // cuánto se acelera en cada rebote con un jugador
   },
 
@@ -39,13 +39,9 @@ export const CONFIG = {
       ruta: "./assets/player_duel.png", // PNG en assets/
       escala: 48, // tamaño 1:1 con el PNG (se ve nítido)
     },
-    // La pelota usa una tira animada (parece girar).
+    // La pelota es una imagen fija.
     pelota: {
       ruta: "./assets/ball_spin.png", // PNG en assets/
-      frameAncho: 32, // tamaño de un cuadro dentro del PNG
-      frameAlto: 32,
-      frames: 4, // cuántos cuadros tiene la tira
-      fps: 12, // velocidad del giro
       escala: 34, // tamaño con el que se dibuja en pantalla
     },
     // El fondo (pista de hielo) es una imagen fija que cubre el canvas.

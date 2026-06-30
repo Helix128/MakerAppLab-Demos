@@ -143,7 +143,9 @@ export class Game {
   }
 
   hacerClic(mx, my) {
-    if (
+    if (this.estado === ESTADOS.INICIO) {
+      this.empezar();
+    } else if (
       (this.estado === ESTADOS.GANASTE || this.estado === ESTADOS.PERDISTE) &&
       clicEnReinicio(mx, my)
     ) {

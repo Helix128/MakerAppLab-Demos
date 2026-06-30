@@ -21,7 +21,7 @@ export class Collectible {
   update() {}
 
   draw(p) {
-    // Sprite animado de la gema, con figura de respaldo si no cargó.
+    // Sprite fijo de la gema, con figura de respaldo si no cargó.
     if (assets.objeto) {
       const escala = CONFIG.sprites.objeto.escala;
       assets.objeto.draw(p, this.x, this.y, escala, escala);
