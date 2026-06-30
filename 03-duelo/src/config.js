@@ -36,12 +36,12 @@ export const CONFIG = {
   sprites: {
     // El jugador (mazo) es una imagen fija (un solo cuadro).
     jugador: {
-      ruta: "/assets/player_duel.png", // PNG en public/assets/
+      ruta: "./assets/player_duel.png", // PNG en assets/
       escala: 48, // tamaño 1:1 con el PNG (se ve nítido)
     },
     // La pelota usa una tira animada (parece girar).
     pelota: {
-      ruta: "/assets/ball_spin.png", // PNG en public/assets/
+      ruta: "./assets/ball_spin.png", // PNG en assets/
       frameAncho: 32, // tamaño de un cuadro dentro del PNG
       frameAlto: 32,
       frames: 4, // cuántos cuadros tiene la tira
@@ -51,7 +51,7 @@ export const CONFIG = {
     // El fondo (pista de hielo) es una imagen fija que cubre el canvas.
     // Las líneas y arcos los dibuja el juego encima.
     fondo: {
-      ruta: "/assets/bg_rink.png",
+      ruta: "./assets/bg_rink.png",
     },
   },
 

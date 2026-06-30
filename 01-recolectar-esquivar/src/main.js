@@ -4,7 +4,6 @@
 //  tocar este archivo: la lógica está en los otros.
 // ============================================================
 
-import p5 from "p5";
 import { CONFIG } from "./config.js";
 import { Game } from "./game.js";
 import { teclaPresionada, teclaSoltada } from "./input.js";
@@ -46,4 +45,4 @@ const sketch = (p) => {
   };
 };
 
-new p5(sketch);
+new window.p5(sketch);

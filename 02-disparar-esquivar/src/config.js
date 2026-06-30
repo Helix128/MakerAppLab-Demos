@@ -40,10 +40,10 @@ export const CONFIG = {
 
   // ---- Sprites (imágenes) ----
   // El jugador usa este sprite. Para cambiar el dibujo, reemplazá
-  // el PNG en public/assets/ (mismo formato: tira horizontal).
+  // el PNG en assets/ (mismo formato: tira horizontal).
   sprites: {
     jugador: {
-      ruta: "/assets/player_ship.png", // PNG en public/assets/
+      ruta: "./assets/player_ship.png", // PNG en assets/
       frameAncho: 32, // tamaño de un cuadro dentro del PNG
       frameAlto: 32,
       frames: 4, // cuántos cuadros tiene la tira
@@ -51,7 +51,7 @@ export const CONFIG = {
       escala: 48, // tamaño con el que se dibuja en pantalla
     },
     enemigo: {
-      ruta: "/assets/enemy_ship.png",
+      ruta: "./assets/enemy_ship.png",
       frameAncho: 32,
       frameAlto: 32,
       frames: 4,
@@ -59,7 +59,7 @@ export const CONFIG = {
       escala: 40,
     },
     bala: {
-      ruta: "/assets/bullet.png",
+      ruta: "./assets/bullet.png",
       frameAncho: 32,
       frameAlto: 32,
       frames: 4,
@@ -68,7 +68,7 @@ export const CONFIG = {
     },
     // El fondo es una imagen fija que cubre todo el canvas.
     fondo: {
-      ruta: "/assets/bg_space.png",
+      ruta: "./assets/bg_space.png",
     },
   },
 };

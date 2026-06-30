@@ -1,7 +1,7 @@
 # Carpeta de imágenes (assets)
 
-Aquí van los PNG del juego. Vite sirve esta carpeta desde la raíz, así
-que un archivo `mi_imagen.png` se usa con la ruta `/assets/mi_imagen.png`.
+Aquí van los PNG del juego. Live Server sirve esta carpeta junto a `index.html`,
+así que un archivo `mi_imagen.png` se usa con la ruta `./assets/mi_imagen.png`.
 
 Este juego usa **tres** imágenes:
 

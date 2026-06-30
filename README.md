@@ -1,9 +1,8 @@
 # MakerAppLab — 3 demos de juegos en p5.js
 
-Tres juegos sencillos hechos con [p5.js](https://p5js.org/) pensados como
-material de aprendizaje. Cada demo es un proyecto Node independiente, con la
-lógica separada en archivos pequeños para que sea fácil entender **dónde** y
-**qué** modificar.
+Tres juegos sencillos hechos con p5.js y pensados como material de aprendizaje.
+Cada demo funciona como sitio estático: `index.html` + archivos JavaScript + assets locales.
+No hace falta Node, npm, Vite ni conexión a internet.
 
 ## Demos
 
@@ -13,24 +12,18 @@ lógica separada en archivos pequeños para que sea fácil entender **dónde** y
 | `02-disparar-esquivar/`     | Disparar y esquivar  | Mueve la nave y dispara a los enemigos; esquiva sus choques. Suma puntos para ganar. |
 | `03-duelo/`                 | Duelo 2 jugadores    | Hockey/fútbol de mesa: dos jugadores en el mismo teclado golpean la pelota e intentan hacer goles en el arco contrario. |
 
-## Cómo ejecutar una demo
+## Cómo ejecutar una demo con Live Server
 
-Cada demo se instala y corre por separado. Entra en su carpeta y ejecuta:
+1. Abre este repositorio en VS Code.
+2. Entra a la carpeta de una demo.
+3. Click derecho sobre su `index.html`.
+4. Elige **Open with Live Server**.
 
-```bash
-cd 01-recolectar-esquivar   # o la demo que quieras
-npm install                 # solo la primera vez
-npm run dev                 # abre el servidor de desarrollo
-```
+También puedes servir todo el repositorio con Live Server y abrir:
 
-Abre la URL que muestra la terminal (normalmente `http://localhost:5173`).
-
-Otros comandos:
-
-```bash
-npm run build     # genera la versión final en dist/
-npm run preview   # sirve la versión de dist/ para probarla
-```
+- `/01-recolectar-esquivar/index.html`
+- `/02-disparar-esquivar/index.html`
+- `/03-duelo/index.html`
 
 ## Cómo está organizado cada juego
 
@@ -39,14 +32,16 @@ entiendes una, entiendes las otras.
 
 | Archivo             | Para qué sirve                                                  |
 |---------------------|----------------------------------------------------------------|
-| `index.html`        | Página que carga el juego.                                      |
-| `src/main.js`       | Punto de arranque. Conecta p5.js con el juego.                  |
+| `index.html`        | Página que carga p5 local y arranca el juego.                  |
+| `vendor/p5.min.js`  | Copia local de p5.js. Evita depender de npm o CDN.             |
+| `assets/`           | Imágenes usadas por el juego.                                  |
+| `src/main.js`       | Punto de arranque. Conecta p5.js con el juego.                 |
 | `src/config.js`     | **Panel de ajustes.** Empieza a experimentar cambiando aquí.   |
-| `src/game.js`       | Cerebro del juego: estados (inicio, jugando, fin) y reglas.     |
-| `src/player.js`     | El o los jugadores.                                             |
-| `src/input.js`      | Lectura del teclado.                                            |
-| `src/collisions.js` | Detección de choques.                                           |
-| `src/screens.js`    | Pantallas de inicio, victoria y derrota.                        |
+| `src/game.js`       | Cerebro del juego: estados (inicio, jugando, fin) y reglas.    |
+| `src/player.js`     | El o los jugadores.                                            |
+| `src/input.js`      | Lectura del teclado.                                           |
+| `src/collisions.js` | Detección de choques.                                          |
+| `src/screens.js`    | Pantallas de inicio, victoria y derrota.                       |
 | `src/sprite.js`     | Dibujo y animación de sprites (tiras de imágenes).             |
 | `src/assets.js`     | Carga de imágenes (sprites y fondo).                           |
 
@@ -66,7 +61,7 @@ Archivos propios de cada juego:
 
 Todos siguen el mismo flujo:
 
-```
+```text
 INICIO  ──(empezar)──►  JUGANDO  ──(ganar/perder)──►  GANASTE / PERDISTE
    ▲                                                        │
    └──────────────────(empezar de nuevo)───────────────────┘
