@@ -2,33 +2,51 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Recolectar y esquivar</title>
     <style>
-      body {
+      :root {
+        --safe-bottom: env(safe-area-inset-bottom, 0px);
+        --safe-left: env(safe-area-inset-left, 0px);
+        --safe-right: env(safe-area-inset-right, 0px);
+        --pad: clamp(10px, 3vw, 24px);
+        --dpad: clamp(118px, 34vw, 150px);
+        --btn: calc(var(--dpad) * 0.36);
+        --gap: calc(var(--dpad) * 0.32);
+      }
+      html, body {
         margin: 0;
+        width: 100vw;
+        height: 100dvh;
+        overflow: hidden;
+        background: #1a1a2e;
+        font-family: system-ui, sans-serif;
+      }
+      body {
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
-        background: #1a1a2e;
-        font-family: system-ui, sans-serif;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      #app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: calc(100dvh - var(--controls-reserve, 0px));
+        padding: var(--pad);
+        box-sizing: border-box;
       }
       canvas {
         display: block;
         border-radius: 8px;
         touch-action: none;
       }
-      .mobile-controls {
-        display: none;
-      }
+      .mobile-controls { display: none; }
       @media (hover: none), (pointer: coarse) {
-        body {
-          overflow: hidden;
-          user-select: none;
-          -webkit-user-select: none;
-          touch-action: none;
-        }
+        body { touch-action: none; }
+        #app { align-items: flex-start; padding-top: max(10px, env(safe-area-inset-top, 0px)); }
         .mobile-controls {
           position: fixed;
           inset: 0;
@@ -37,40 +55,42 @@
         }
         .mobile-dpad {
           position: absolute;
-          left: 20px;
-          bottom: 20px;
-          width: 150px;
-          height: 150px;
+          left: max(var(--pad), var(--safe-left));
+          bottom: max(var(--pad), var(--safe-bottom));
+          width: var(--dpad);
+          height: var(--dpad);
           pointer-events: auto;
         }
         .mobile-btn {
           position: absolute;
-          width: 54px;
-          height: 54px;
+          width: var(--btn);
+          height: var(--btn);
           border: 2px solid rgba(255, 255, 255, 0.65);
-          border-radius: 14px;
+          border-radius: clamp(10px, 3vw, 14px);
           background: rgba(255, 255, 255, 0.22);
           color: white;
-          font: 700 22px system-ui, sans-serif;
+          font: 700 clamp(18px, 5vw, 22px) system-ui, sans-serif;
           touch-action: none;
           user-select: none;
           -webkit-user-select: none;
         }
-        .mobile-btn:active {
-          background: rgba(255, 255, 255, 0.42);
-        }
-        .mobile-up { left: 48px; top: 0; }
-        .mobile-left { left: 0; top: 48px; }
-        .mobile-right { right: 0; top: 48px; }
-        .mobile-down { left: 48px; bottom: 0; }
+        .mobile-btn:active { background: rgba(255, 255, 255, 0.42); }
+        .mobile-up { left: var(--gap); top: 0; }
+        .mobile-left { left: 0; top: var(--gap); }
+        .mobile-right { right: 0; top: var(--gap); }
+        .mobile-down { left: var(--gap); bottom: 0; }
         .mobile-start {
-          right: 20px;
-          bottom: 42px;
-          width: 112px;
-          height: 54px;
-          font-size: 16px;
+          right: max(var(--pad), var(--safe-right));
+          bottom: calc(max(var(--pad), var(--safe-bottom)) + var(--btn) * 0.25);
+          width: clamp(92px, 28vw, 112px);
+          height: var(--btn);
+          font-size: clamp(14px, 4vw, 16px);
           pointer-events: auto;
         }
+      }
+      @media (hover: none) and (orientation: landscape), (pointer: coarse) and (orientation: landscape) {
+        #app { height: 100dvh; align-items: center; }
+        .mobile-controls { opacity: 0.72; }
       }
     </style>
   </head>

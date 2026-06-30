@@ -8,14 +8,15 @@ import { cambiarControl } from "./input.js";
 export function crearControlesMoviles({ empezar }) {
   const controles = document.createElement("div");
   controles.className = "mobile-controls mobile-controls-shooter";
+  controles.dataset.controls = "shooter";
   controles.innerHTML = `
     <div class="mobile-dpad" aria-label="Movimiento">
-      <button class="mobile-btn mobile-up" data-control="arriba" aria-label="Arriba">▲</button>
-      <button class="mobile-btn mobile-left" data-control="izquierda" aria-label="Izquierda">◀</button>
-      <button class="mobile-btn mobile-right" data-control="derecha" aria-label="Derecha">▶</button>
-      <button class="mobile-btn mobile-down" data-control="abajo" aria-label="Abajo">▼</button>
+      <button class="mobile-btn mobile-up" type="button" data-control="arriba" aria-label="Arriba">▲</button>
+      <button class="mobile-btn mobile-left" type="button" data-control="izquierda" aria-label="Izquierda">◀</button>
+      <button class="mobile-btn mobile-right" type="button" data-control="derecha" aria-label="Derecha">▶</button>
+      <button class="mobile-btn mobile-down" type="button" data-control="abajo" aria-label="Abajo">▼</button>
     </div>
-    <button class="mobile-btn mobile-fire" data-control="disparar" aria-label="Disparar">●</button>
+    <button class="mobile-btn mobile-fire" type="button" data-control="disparar" aria-label="Disparar">●</button>
     <button class="mobile-btn mobile-start" type="button">Empezar</button>
   `;
 

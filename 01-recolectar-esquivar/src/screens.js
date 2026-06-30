@@ -15,32 +15,33 @@ function fondo(p) {
 export function dibujarInicio(p) {
   fondo(p);
 
-  p.textSize(40);
-  p.text("Recolectar y esquivar", CONFIG.ancho / 2, CONFIG.alto / 2 - 80);
+  const base = Math.min(CONFIG.ancho, CONFIG.alto);
+  p.textSize(base * 0.058);
+  p.text("Recolectar y esquivar", CONFIG.ancho / 2, CONFIG.alto / 2 - 82);
 
-  p.textSize(18);
+  p.textSize(base * 0.028);
   p.text(
-    "Muévete con las FLECHAS o WASD.\n" +
-      "Recoge los diamantes para sumar puntos.\n" +
-      "Esquiva los cuadrados rojos.\n" +
-      "En móvil usa los botones en pantalla.",
+    "Muévete con FLECHAS o WASD.\n" +
+      "Recoge diamantes y esquiva enemigos.\n" +
+      "En móvil usa botones en pantalla.",
     CONFIG.ancho / 2,
-    CONFIG.alto / 2
+    CONFIG.alto / 2 - 4
   );
 
-  p.textSize(22);
-  p.text("Presiona ENTER o toca para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 110);
+  p.textSize(base * 0.034);
+  p.text("ENTER o toca para empezar", CONFIG.ancho / 2, CONFIG.alto / 2 + 104);
 }
 
 export function dibujarVictoria(p, puntos) {
   fondo(p);
 
+  const base = Math.min(CONFIG.ancho, CONFIG.alto);
   p.fill(CONFIG.colorObjeto);
-  p.textSize(48);
+  p.textSize(base * 0.072);
   p.text("¡Ganaste!", CONFIG.ancho / 2, CONFIG.alto / 2 - 60);
 
   p.fill(CONFIG.colorTexto);
-  p.textSize(22);
+  p.textSize(base * 0.034);
   p.text("Puntos: " + puntos, CONFIG.ancho / 2, CONFIG.alto / 2);
 
   dibujarBotonReinicio(p);
@@ -49,12 +50,13 @@ export function dibujarVictoria(p, puntos) {
 export function dibujarDerrota(p, puntos) {
   fondo(p);
 
+  const base = Math.min(CONFIG.ancho, CONFIG.alto);
   p.fill(CONFIG.colorEnemigo);
-  p.textSize(48);
+  p.textSize(base * 0.072);
   p.text("Perdiste", CONFIG.ancho / 2, CONFIG.alto / 2 - 60);
 
   p.fill(CONFIG.colorTexto);
-  p.textSize(22);
+  p.textSize(base * 0.034);
   p.text("Puntos: " + puntos, CONFIG.ancho / 2, CONFIG.alto / 2);
 
   dibujarBotonReinicio(p);
@@ -80,7 +82,7 @@ function dibujarBotonReinicio(p) {
   p.rect(b.x, b.y, b.ancho, b.alto, 10);
 
   p.fill("#16213e");
-  p.textSize(20);
+  p.textSize(Math.min(CONFIG.ancho, CONFIG.alto) * 0.032);
   p.textAlign(p.CENTER, p.CENTER);
   p.text("Empezar de nuevo", b.x + b.ancho / 2, b.y + b.alto / 2);
 }

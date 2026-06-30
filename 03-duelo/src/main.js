@@ -9,6 +9,7 @@ import { Game } from "./game.js";
 import { teclaPresionada, teclaSoltada } from "./input.js";
 import { cargarAssets } from "./assets.js";
 import { crearControlesMoviles } from "./mobile-controls.js";
+import { instalarCanvasResponsive } from "../../shared/responsive-canvas.js";
 
 const sketch = (p) => {
   let game;
@@ -21,6 +22,7 @@ const sketch = (p) => {
   p.setup = () => {
     const canvas = p.createCanvas(CONFIG.ancho, CONFIG.alto);
     canvas.parent("app");
+    instalarCanvasResponsive(p, canvas, CONFIG, "duel");
     p.noSmooth(); // mantén los píxeles nítidos (look retro)
     game = new Game();
     crearControlesMoviles({ empezar: () => game.presionarEspacio() });
