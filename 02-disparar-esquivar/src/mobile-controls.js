@@ -31,6 +31,8 @@ export function crearControlesMoviles({ empezar }) {
     e.preventDefault();
     empezar();
   });
+
+  window.dispatchEvent(new Event("game-controls-ready"));
 }
 
 function conectarBoton(boton, cambiar) {
